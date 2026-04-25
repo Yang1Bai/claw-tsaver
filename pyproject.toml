@@ -15,6 +15,7 @@ dependencies = [
 [project.scripts]
 claw-tsaver = "claw_tsaver.__main__:main"
 claw-tsaver-mcp = "claw_tsaver.__main__:run_mcp"
+claw-tsaver-dashboard = "claw_tsaver.__main__:run_dashboard"
 
 [build-system]
 requires = ["hatchling"]

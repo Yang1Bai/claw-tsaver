@@ -42,3 +42,9 @@ def run_mcp() -> None:
     import asyncio
     from claw_tsaver.proxy import serve
     asyncio.run(serve())
+
+
+def run_dashboard() -> None:
+    """Entry point for the local web dashboard."""
+    from claw_tsaver.dashboard import run
+    run()
