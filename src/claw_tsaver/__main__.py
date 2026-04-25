@@ -35,3 +35,10 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+
+
+def run_mcp() -> None:
+    """Entry point for the MCP server (used by OpenClaw via uvx)."""
+    import asyncio
+    from claw_tsaver.proxy import serve
+    asyncio.run(serve())
