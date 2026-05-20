@@ -100,3 +100,34 @@ MIT — see LICENSE file.
 ## Contributing
 
 Issues and PRs welcome.
+
+---
+
+## 🇨🇳 中文说明
+
+### 什么是 claw-tsaver？
+
+**claw-tsaver** 是一个为 OpenClaw 用户设计的 MCP 代理，通过懒加载扩展机制将工具调用的 token 消耗削减 **90%+**。
+
+### 问题背景
+
+MCP 工具调用（如 fetch、puppeteer）经常在单次响应中返回数千个 token 的 HTML 或 JSON，但模型通常只使用其中约 5% 的内容。剩余 95% 悄悄消耗上下文窗口并增加费用。
+
+### 解决方案
+
+claw-tsaver 作为 OpenClaw 与下游 MCP 服务器之间的代理：
+1. 拦截过大的响应（超过可配置的 token 阈值）
+2. 将完整内容存储到本地 SQLite 数据库
+3. 返回给模型一个**紧凑预览 + 按需扩展句柄**
+4. 模型需要更多内容时，调用 `expand_content` 工具按需获取
+
+### 快速安装
+
+```bash
+npm install -g claw-tsaver
+# 在 OpenClaw 配置中添加为 MCP 服务器
+```
+
+### 开源协议
+
+MIT License
